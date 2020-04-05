@@ -10,3 +10,13 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+  //variables to hold train data
+  var trainName = "";
+  var destination = "";
+  var firstTime = "";
+  var frequency = 0;
+  var 
+
+  
+
