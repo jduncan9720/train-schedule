@@ -15,10 +15,12 @@ firebase.initializeApp(firebaseConfig);
 //Assign the database to a variable
 var database = firebase.database();
 
-  var trainName = "";
-  var trainDestination = "";
-  var firstTrain = "";
-  var trainFrequency = 0;
+var trainName = "";
+var trainDestination = "";
+var firstTrain = "";
+var trainFrequency = 0;
+var currentTime = moment();
+console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
 //When submit button is clicked 
 $("#submit-button").on("click", function(event) {
@@ -55,11 +57,22 @@ database.ref("/trains").on("child_added", function(childSnapshot) {
   trainDestination = childSnapshot.val().trainDestination;
   firstTrain = childSnapshot.val().firstTrain;
   trainFrequency = childSnapshot.val().trainFrequency;
+  //Do math to add current time and arrival times.
+  // var firstTimeConverted = moment(firstTrain, "HH:mm")
+  // console.log(firstTimeConverted) 
+  // var currentTime = moment();
+  // console.log("Current Time: " + moment(currentTime).format("HH:mm"));
+  // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  // console.log("Difference in Time: " + diffTime);
+  // var timeRemainder = diffTime % trainFrequency;
+  // console.log(timeRemainder);
+  // var minutesTillTrain = trainFrequency - timeRemainder;
+  // console.log("Minutes to Train " + minutesTillTrain);
+  // var nextTrainArrive = moment.add(minutesTillTrain, "minutes");
+  // console.log("Arrival Time:" + moment(nextTrainArrive).format("hh.mm"));
 
-// .append() to the table row to add a new row with trainName
-$("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + firstTrain + "</td></tr>");
-
-//Do math to add current time and arrival times.
+  // .append() to the table row to add a new row with trainName
+  $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + firstTrain + "</td></tr>");
 
 });
 
