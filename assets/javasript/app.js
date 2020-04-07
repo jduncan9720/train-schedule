@@ -58,21 +58,21 @@ database.ref("/trains").on("child_added", function(childSnapshot) {
   firstTrain = childSnapshot.val().firstTrain;
   trainFrequency = childSnapshot.val().trainFrequency;
   //Do math to add current time and arrival times.
-  // var firstTimeConverted = moment(firstTrain, "HH:mm")
-  // console.log(firstTimeConverted) 
-  // var currentTime = moment();
-  // console.log("Current Time: " + moment(currentTime).format("HH:mm"));
-  // var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-  // console.log("Difference in Time: " + diffTime);
-  // var timeRemainder = diffTime % trainFrequency;
-  // console.log(timeRemainder);
-  // var minutesTillTrain = trainFrequency - timeRemainder;
-  // console.log("Minutes to Train " + minutesTillTrain);
-  // var nextTrainArrive = moment.add(minutesTillTrain, "minutes");
-  // console.log("Arrival Time:" + moment(nextTrainArrive).format("hh.mm"));
+  var firstTimeConverted = moment(firstTrain, "HH:mm")
+  console.log(firstTimeConverted) 
+  var currentTime = moment();
+  console.log("Current Time: " + moment(currentTime).format("HH:mm"));
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("Difference in Time: " + diffTime);
+  var timeRemainder = diffTime % trainFrequency;
+  console.log(timeRemainder);
+  var minutesTillTrain = trainFrequency - timeRemainder;
+  console.log("Minutes to Train " + minutesTillTrain);
+  var nextTrainArrive = moment().add(minutesTillTrain, "minutes");
+  console.log("Arrival Time:" + moment(nextTrainArrive).format("hh:mm"));
 
   // .append() to the table row to add a new row with trainName
-  $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + firstTrain + "</td></tr>");
+  $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + moment(nextTrainArrive).format("hh:mm") + "</td><td>" + minutesTillTrain + "</td></tr>");
 
 });
 
