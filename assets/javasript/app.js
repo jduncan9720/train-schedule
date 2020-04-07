@@ -15,20 +15,25 @@ firebase.initializeApp(firebaseConfig);
 //Assign the database to a variable
 var database = firebase.database();
 
+  var trainName = "";
+  var trainDestination = "";
+  var firstTrain = "";
+  var trainFrequency = 0;
+
 //When submit button is clicked 
 $("#submit-button").on("click", function(event) {
   event.preventDefault();
 
-  var trainName = $("#Input1").val().trim();
-  var trainDestination = $("#Input2").val().trim();
-  var firstTrain = $("#Input3").val().trim();
-  var trainFrequency = $("#Input4").val().trim()
+  trainName = $("#Input1").val().trim();
+  trainDestination = $("#Input2").val().trim();
+  firstTrain = $("#Input3").val().trim();
+  trainFrequency = $("#Input4").val().trim()
 
   database.ref("/trains").push({
-    Train: trainName,
-    Destination: trainDestination,
-    Arrival: firstTrain,
-    Frequency: trainFrequency
+    trainName: trainName,
+    trainDestination: trainDestination,
+    firstTrain: firstTrain,
+    trainFrequency: trainFrequency
   });
 
   $("#Input1").val("");
@@ -39,16 +44,23 @@ $("#submit-button").on("click", function(event) {
 });
 
 //need to add input data to table
-database.ref().on("child_added", function(snapshot) {
+database.ref("/trains").on("child_added", function(childSnapshot) {
 
-  console.log("child_added");
-  var trainName = snapshot.val().Train;
-  var trainDestination = snapshot.val().Destination;
-  var firstTrain = snapshot.val().Arrival;
-  var trainFrequency = snapshot.val().Frequency;
+  console.log(childSnapshot.val().trainName);
+  console.log(childSnapshot.val().trainDestination);
+  console.log(childSnapshot.val().firstTrain);
+  console.log(childSnapshot.val().trainFrequency);
+  
+  trainName = childSnapshot.val().trainName;
+  trainDestination = childSnapshot.val().trainDestination;
+  firstTrain = childSnapshot.val().firstTrain;
+  trainFrequency = childSnapshot.val().trainFrequency;
 
-  // .append() to the table row to add a new row with trainName
-  $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + firstTrain + "</td><td>" + trainFrequency + "</td></tr>");
+// .append() to the table row to add a new row with trainName
+$("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + firstTrain + "</td></tr>");
+
+//Do math to add current time and arrival times.
+
 });
 
 
