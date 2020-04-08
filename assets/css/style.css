@@ -1,0 +1,34 @@
+body{
+    background-image: url("../images/GareduNord.jpg");
+    background-size: 100%;
+    position: relative;
+    
+    color: aliceblue;
+}
+.table{
+    color: aliceblue;
+    background: rgba(255, 255, 255, 0.8);
+
+}
+#trainRows {
+    color: darkred;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+}
+th{
+    color: darkslategray;
+}
+h1{
+    text-align: center;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 50px;
+    color: mediumturquoise;
+    
+}
+h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+form{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

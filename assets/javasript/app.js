@@ -19,8 +19,14 @@ var trainName = "";
 var trainDestination = "";
 var firstTrain = "";
 var trainFrequency = 0;
-var currentTime = moment();
-console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+//display a current time clock
+function currentTime() {
+  var current = moment().format('LT');
+  $("#clock").html(current);
+  setTimeout(currentTime, 1000);
+};
+currentTime()
 
 //When submit button is clicked 
 $("#submit-button").on("click", function(event) {
@@ -75,14 +81,3 @@ database.ref("/trains").on("child_added", function(childSnapshot) {
   $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + moment(nextTrainArrive).format("hh:mm") + "</td><td>" + minutesTillTrain + "</td></tr>");
 
 });
-
-
-
-
-
-
-
-  
-
-  
-

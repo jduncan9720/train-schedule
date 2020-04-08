@@ -11,19 +11,23 @@
     <script src ="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
-    
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet">
+
     <title>Train Schedule</title>
   </head>
   <body>
     <div class = "container-fluid">
         <br>
+        <h1>Duncan Street Station</h1>
         <div class = "container">
             <div class = "row">
                 <div class = "col-8 text-center">
-                    <div class = "row1 border">
-                        <h1>Train Schedule</h1>
+                    <div class = "row1 border pt-2">
+                        <h2>Train Schedule</h2>
+                        <div id = "clock"></div>
                     </div>
-                    <div class = "row1 border">
+                    <div class = "row1">
                         <table class="table">
                             <thead>
                               <tr>
@@ -42,7 +46,7 @@
                 </div>
                 <div class = "col-4 border">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group mt-2">
                             <label for="Input1">Train Name</label>
                             <input type="text" class="form-control" id="Input1" placeholder="Express">
                         </div>
@@ -58,7 +62,7 @@
                         <label for="Input4">Frequency (min)</label>
                             <input type="number" class="form-control" id="Input4" placeholder="3 min">
                         </div>      
-                        <button type="submit" class="btn btn-dark"id="submit-button">Submit</button>
+                        <button type="submit" class="btn bg-white mb-2"id="submit-button">Submit</button>
                     </form>
                 </div>
             </div>
