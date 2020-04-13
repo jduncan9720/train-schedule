@@ -81,3 +81,7 @@ database.ref("/trains").on("child_added", function(childSnapshot) {
   $("#trainRows").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" + trainFrequency + "</td><td>" + moment(nextTrainArrive).format("hh:mm") + "</td><td>" + minutesTillTrain + "</td></tr>");
 
 });
+
+setInterval(function() {
+  window.location.reload();
+}, 60000);
